@@ -20,6 +20,10 @@
     background-color: blue;
 }
 
+#clear-board {
+    display: block;
+}
+
 #pixel-board {
     width: 226px;
     height: 226px;
