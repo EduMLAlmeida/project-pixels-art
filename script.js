@@ -47,11 +47,35 @@ function newBoard () {
         board.removeChild(board.lastElementChild);
     }
     
-    console.log(board);
-    console.log(blanks.length);
-    console.log(iterationNumber);
-    console.log(blanks);
+    let nInput = document.querySelector('#board-size');
+    let n = nInput.value;
+    let pixelsNumber = n*n;
+    board.appendChild(newPixel);
+    
+    if (nInput.value == '') {
+        window.alert('Board inválido!');
+    }
+    
+    for (index6 = 1; index6 < pixelsNumber; index6 += 1) {
+        let pixelClone = newPixel.cloneNode();
+        board.appendChild(pixelClone);
+    }
+
+    board.style.width = n*42 + 'px';
+    board.style.height = n*42 + 'px';
+
+    let blanks2 = document.getElementsByClassName('pixel');
+
+    function paint2 (origin3) {
+        let selectedPalete2 = document.querySelector('.selected');
+        let selectedColor2 = window.getComputedStyle(selectedPalete2, null).getPropertyValue("background-color");
+        let selected2 = origin3.target;
+        selected2.style.backgroundColor = selectedColor2;
+    }
+
+    for (index7 = 0; index7 < blanks2.length; index7 += 1) {
+        blanks2[index7].addEventListener('click', paint2);
+    }
 }
 
 boardButton.addEventListener('click', newBoard);
-console.log(boardButton);

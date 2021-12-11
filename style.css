@@ -27,6 +27,8 @@
 #pixel-board {
     width: 226px;
     height: 226px;
+    font-size: 0;
+    /* font-size 0 para retirar espaço entre as divs (pixels do pixel board) de acordo com https://www.horadecodar.com.br/2021/02/18/como-remover-o-espaco-entre-elementos-inline-ou-inline-block/ */
 }
 
 .pixel {
