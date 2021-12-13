@@ -51,18 +51,29 @@ function newBoard () {
     let n = nInput.value;
     let pixelsNumber = n*n;
     board.appendChild(newPixel);
+
+    board.style.width = n*42 + 'px';
+    board.style.height = n*42 + 'px';
     
     if (nInput.value == '') {
         window.alert('Board inválido!');
+        n = 5;
+        pixelsNumber = 25; 
+    } else if (parseInt(nInput.value) < 5) {
+        n = 5;
+        pixelsNumber = 25;    
+    } else if (parseInt(nInput.value) > 50) {
+        n = 50;
+        pixelsNumber = 2500;    
     }
+
+    board.style.width = n*42 + 'px';
+    board.style.height = n*42 + 'px';
     
     for (index6 = 1; index6 < pixelsNumber; index6 += 1) {
         let pixelClone = newPixel.cloneNode();
         board.appendChild(pixelClone);
     }
-
-    board.style.width = n*42 + 'px';
-    board.style.height = n*42 + 'px';
 
     let blanks2 = document.getElementsByClassName('pixel');
 
@@ -79,3 +90,26 @@ function newBoard () {
 }
 
 boardButton.addEventListener('click', newBoard);
+
+console.log(Math.random() * 255);
+
+// função gerar cor retirada do site https://wallacemaxters.com.br/blog/2021/02/20/como-gerar-cores-aleatorias-no-javascript
+
+function gerar_cor() {
+
+    let r = parseInt(Math.random() * 255);
+ 
+    let g = parseInt(Math.random() * 255);
+ 
+    let b = parseInt(Math.random() * 255);
+ 
+    return `rgb(${r}, ${g}, ${b})`;
+}
+ 
+
+let colorRed = document.querySelector('#color2');
+colorRed.style.backgroundColor = gerar_cor();
+let colorGreen = document.querySelector('#color3');
+colorGreen.style.backgroundColor = gerar_cor();
+let colorBlue = document.querySelector('#color4');
+colorBlue.style.backgroundColor = gerar_cor();
